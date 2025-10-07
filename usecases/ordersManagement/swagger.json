@@ -7,66 +7,6 @@
   },
   "components": {
     "schemas": {
-      "CustomerDetails": {
-        "type": "object",
-        "description": "Customer information",
-        "properties": {
-          "fullName": {
-            "type": "string",
-            "description": "The customer's full legal name"
-          },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "description": "The customer's primary email address"
-          },
-          "mobileNumber": {
-            "type": "string",
-            "description": "The customer's mobile phone number"
-          }
-        },
-        "required": ["fullName", "email", "mobileNumber"]
-      },
-      "Address": {
-        "type": "object",
-        "description": "Physical address information",
-        "properties": {
-          "street": {
-            "type": "string",
-            "description": "Street name and number"
-          },
-          "city": {
-            "type": "string",
-            "description": "City name"
-          },
-          "state": {
-            "type": "string",
-            "description": "State or province"
-          },
-          "zipCode": {
-            "type": "string",
-            "description": "Postal or ZIP code"
-          }
-        },
-        "required": ["street", "city", "state", "zipCode"]
-      },
-      "Appointment": {
-        "type": "object",
-        "description": "Appointment scheduling details",
-        "properties": {
-          "preferredDate": {
-            "type": "string",
-            "format": "date",
-            "description": "The customer's preferred date for installation or service"
-          },
-          "timeSlot": {
-            "type": "string",
-            "enum": ["Morning (8-12)", "Afternoon (1-5)", "Anytime"],
-            "description": "The customer's preferred time window"
-          }
-        },
-        "required": ["preferredDate", "timeSlot"]
-      },
       "Price": {
         "type": "object",
         "description": "Price information",
@@ -119,16 +59,16 @@
             "description": "A unique identifier for this order"
           },
           "customer": {
-            "$ref": "#/components/schemas/CustomerDetails"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
           "serviceAddress": {
-            "$ref": "#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
-            "$ref": "#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "preferredAppointment": {
-            "$ref": "#/components/schemas/Appointment"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
           },
           "lineItems": {
             "type": "array",
@@ -162,16 +102,16 @@
             "description": "A unique identifier for this draft order"
           },
           "customer": {
-            "$ref": "#/components/schemas/CustomerDetails"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
           "serviceAddress": {
-            "$ref": "#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
-            "$ref": "#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "preferredAppointment": {
-            "$ref": "#/components/schemas/Appointment"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
           },
           "lineItems": {
             "type": "array",
@@ -219,16 +159,16 @@
             "description": "The timestamp of the update"
           },
           "customer": {
-            "$ref": "#/components/schemas/CustomerDetails"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
           "serviceAddress": {
-            "$ref": "#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
-            "$ref": "#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "preferredAppointment": {
-            "$ref": "#/components/schemas/Appointment"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
           },
           "lineItems": {
             "type": "array",

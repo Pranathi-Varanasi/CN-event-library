@@ -7,62 +7,6 @@
   },
   "components": {
     "schemas": {
-      "ContactInfo": {
-        "type": "object",
-        "description": "Standard contact information for a person",
-        "properties": {
-          "fullName": {
-            "type": "string",
-            "description": "The person's full name"
-          },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "description": "The person's email address"
-          },
-          "mobileNumber": {
-            "type": "string",
-            "description": "The person's mobile phone number"
-          }
-        },
-        "required": ["fullName", "mobileNumber"]
-      },
-      "Address": {
-        "type": "object",
-        "description": "A physical service or mailing address",
-        "properties": {
-          "street": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "state": {
-            "type": "string"
-          },
-          "zipCode": {
-            "type": "string"
-          }
-        },
-        "required": ["street", "city", "state", "zipCode"]
-      },
-      "Appointment": {
-        "type": "object",
-        "description": "Details for a scheduled technician visit",
-        "properties": {
-          "appointmentDate": {
-            "type": "string",
-            "format": "date",
-            "description": "The confirmed date for the technician visit"
-          },
-          "timeSlot": {
-            "type": "string",
-            "enum": ["Morning (8-12)", "Afternoon (1-5)"],
-            "description": "The confirmed time window for the visit"
-          }
-        },
-        "required": ["appointmentDate", "timeSlot"]
-      },
       "TicketLogEntry": {
         "type": "object",
         "description": "An entry in the ticket's history log",
@@ -96,10 +40,10 @@
             "description": "The unique identifier for the customer account"
           },
           "customerContact": {
-            "$ref": "#/components/schemas/ContactInfo"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
           "serviceAddress": {
-            "$ref": "#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "problemDescription": {
             "type": "string",
@@ -169,7 +113,7 @@
           "onSiteContact": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/ContactInfo"
+                "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
               },
               {
                 "description": "Contact info for the person the technician should call upon arrival (e.g., a spouse or family member)"
