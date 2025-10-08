@@ -11,6 +11,10 @@
         "type": "object",
         "description": "Customer information",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "fullName": {
             "type": "string",
             "description": "The customer's full legal name"
@@ -25,12 +29,16 @@
             "description": "The customer's mobile phone number"
           }
         },
-        "required": ["fullName", "email", "mobileNumber"]
+        "required": ["orgId", "fullName", "email", "mobileNumber"]
       },
       "Address": {
         "type": "object",
         "description": "Physical address information",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "street": {
             "type": "string",
             "description": "Street name and number"
@@ -48,12 +56,16 @@
             "description": "Postal or ZIP code"
           }
         },
-        "required": ["street", "city", "state", "zipCode"]
+        "required": ["orgId", "street", "city", "state", "zipCode"]
       },
       "Appointment": {
         "type": "object",
         "description": "Appointment scheduling details",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "preferredDate": {
             "type": "string",
             "format": "date",
@@ -65,12 +77,10 @@
             "description": "The customer's preferred time window"
           }
         },
-        "required": ["preferredDate", "timeSlot"]
+        "required": ["orgId", "preferredDate", "timeSlot"]
       }
-      
     }
   },
-  
   "tags": [
     {
       "name": "reusableComponents",

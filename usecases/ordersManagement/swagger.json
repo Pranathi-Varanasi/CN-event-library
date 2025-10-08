@@ -11,22 +11,30 @@
         "type": "object",
         "description": "Price information",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "amount": {
             "type": "number",
             "description": "The numeric value of the price"
           },
-          "currency": {
-            "type": "string",
-            "default": "USD",
-            "description": "The currency code (e.g., USD)"
-          }
+            "currency": {
+              "type": "string",
+              "default": "USD",
+              "description": "The currency code (e.g., USD)"
+            }
         },
-        "required": ["amount", "currency"]
+        "required": ["orgId", "amount", "currency"]
       },
       "OrderLineItem": {
         "type": "object",
         "description": "Individual line item in an order",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "itemId": {
             "type": "string",
             "description": "A unique identifier for this line item"
@@ -47,12 +55,16 @@
             "$ref": "#/components/schemas/Price"
           }
         },
-        "required": ["itemId", "productType", "productName"]
+        "required": ["orgId", "itemId", "productType", "productName"]
       },
       "OrderCreatedEvent": {
         "type": "object",
         "description": "Event fired when a customer submits a new order for activation",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "orderId": {
             "type": "string",
             "format": "uuid",
@@ -84,6 +96,7 @@
           }
         },
         "required": [
+          "orgId",
           "orderId",
           "customer",
           "serviceAddress",
@@ -96,6 +109,10 @@
         "type": "object",
         "description": "Event fired when a customer saves a draft order without submitting",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "orderId": {
             "type": "string",
             "format": "uuid",
@@ -120,12 +137,16 @@
             }
           }
         },
-        "required": ["orderId", "customer", "serviceAddress"]
+        "required": ["orgId", "orderId", "customer", "serviceAddress"]
       },
       "OrderConfirmedEvent": {
         "type": "object",
         "description": "Event fired when order is validated and accepted for fulfillment",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "orderId": {
             "type": "string",
             "format": "uuid",
@@ -142,12 +163,16 @@
             "description": "The new status of the order"
           }
         },
-        "required": ["orderId", "confirmationTimestamp"]
+        "required": ["orgId", "orderId", "confirmationTimestamp"]
       },
       "OrderUpdatedEvent": {
         "type": "object",
         "description": "Event fired when an existing unfulfilled order is modified",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "orderId": {
             "type": "string",
             "format": "uuid",
@@ -177,12 +202,16 @@
             }
           }
         },
-        "required": ["orderId", "updatedTimestamp"]
+        "required": ["orgId", "orderId", "updatedTimestamp"]
       },
       "OrderCancelledEvent": {
         "type": "object",
         "description": "Event fired when an order is cancelled before fulfillment",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "orderId": {
             "type": "string",
             "format": "uuid",
@@ -198,7 +227,7 @@
             "description": "The reason for the cancellation"
           }
         },
-        "required": ["orderId", "cancellationTimestamp", "reason"]
+        "required": ["orgId", "orderId", "cancellationTimestamp", "reason"]
       }
     }
   },

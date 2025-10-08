@@ -11,6 +11,10 @@
         "type": "object",
         "description": "An entry in the ticket's history log",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "timestamp": {
             "type": "string",
             "format": "date-time"
@@ -24,12 +28,16 @@
             "description": "The content of the log entry or note"
           }
         },
-        "required": ["timestamp", "author", "note"]
+        "required": ["orgId", "timestamp", "author", "note"]
       },
       "ServiceTicketCreatedEvent": {
         "type": "object",
         "description": "Event fired when a customer reports a new service issue",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "ticketId": {
             "type": "string",
             "format": "uuid",
@@ -66,6 +74,7 @@
           }
         },
         "required": [
+          "orgId",
           "ticketId",
           "customerId",
           "customerContact",
@@ -78,6 +87,10 @@
         "type": "object",
         "description": "Event fired when ticket is updated with new information or status change",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "ticketId": {
             "type": "string",
             "format": "uuid",
@@ -92,12 +105,16 @@
             "$ref": "#/components/schemas/TicketLogEntry"
           }
         },
-        "required": ["ticketId"]
+        "required": ["orgId", "ticketId"]
       },
       "ServiceTicketDispatchScheduledEvent": {
         "type": "object",
         "description": "Event fired when a technician visit is scheduled for a ticket",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "ticketId": {
             "type": "string",
             "format": "uuid",
@@ -121,12 +138,16 @@
             ]
           }
         },
-        "required": ["ticketId", "technicianId", "appointmentDetails", "onSiteContact"]
+        "required": ["orgId", "ticketId", "technicianId", "appointmentDetails", "onSiteContact"]
       },
       "ServiceTicketResolvedEvent": {
         "type": "object",
         "description": "Event fired when a technician has completed work and resolved the issue",
         "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
           "ticketId": {
             "type": "string",
             "format": "uuid",
@@ -149,7 +170,7 @@
             "$ref": "#/components/schemas/TicketLogEntry"
           }
         },
-        "required": ["ticketId", "resolutionTimestamp", "resolvedBy", "resolutionCode", "resolutionNotes"]
+        "required": ["orgId", "ticketId", "resolutionTimestamp", "resolvedBy", "resolutionCode", "resolutionNotes"]
       }
     }
   },
