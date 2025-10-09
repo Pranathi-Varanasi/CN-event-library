@@ -70,16 +70,16 @@
             "format": "uuid",
             "description": "A unique identifier for this order"
           },
-          "customer": {
+          "CustomerDetails": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
-          "serviceAddress": {
+          "Address": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
-            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/billingAddress"
           },
-          "preferredAppointment": {
+          "Appointment": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
           },
           "lineItems": {
@@ -98,10 +98,10 @@
         "required": [
           "orgId",
           "orderId",
-          "customer",
-          "serviceAddress",
+          "CustomerDetails",
+          "Address",
           "billingAddress",
-          "preferredAppointment",
+          "Appointment",
           "lineItems"
         ]
       },
@@ -118,16 +118,16 @@
             "format": "uuid",
             "description": "A unique identifier for this draft order"
           },
-          "customer": {
+          "CustomerDetails": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
-          "serviceAddress": {
+          "Address": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
-          "preferredAppointment": {
+          "Appointment": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
           },
           "lineItems": {
@@ -137,7 +137,7 @@
             }
           }
         },
-        "required": ["orgId", "orderId", "customer", "serviceAddress"]
+        "required": ["orgId", "orderId", "CustomerDetails", "Address"]
       },
       "OrderConfirmedEvent": {
         "type": "object",
@@ -183,16 +183,16 @@
             "format": "date-time",
             "description": "The timestamp of the update"
           },
-          "customer": {
+          "CustomerDetails": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
-          "serviceAddress": {
+          "Address": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
-          "preferredAppointment": {
+          "Appointment": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
           },
           "lineItems": {

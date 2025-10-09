@@ -47,10 +47,10 @@
             "type": "string",
             "description": "The unique identifier for the customer account"
           },
-          "customerContact": {
+          "CustomerDetails": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
-          "serviceAddress": {
+          "Address": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "problemDescription": {
@@ -77,8 +77,8 @@
           "orgId",
           "ticketId",
           "customerId",
-          "customerContact",
-          "serviceAddress",
+          "CustomerDetails",
+          "Address",
           "problemDescription",
           "serviceType"
         ]
@@ -124,21 +124,14 @@
             "type": "string",
             "description": "The ID of the assigned field technician"
           },
-          "appointmentDetails": {
-            "$ref": "#/components/schemas/Appointment"
+          "Appointment": {
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
           },
-          "onSiteContact": {
-            "allOf": [
-              {
-                "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
-              },
-              {
-                "description": "Contact info for the person the technician should call upon arrival (e.g., a spouse or family member)"
-              }
-            ]
+          "CustomerDetails": {
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           }
         },
-        "required": ["orgId", "ticketId", "technicianId", "appointmentDetails", "onSiteContact"]
+        "required": ["orgId", "ticketId", "technicianId", "appointmentDetails", "CustomerDetails"]
       },
       "ServiceTicketResolvedEvent": {
         "type": "object",
@@ -195,7 +188,7 @@
                   "email": "john.smith@email.com",
                   "mobileNumber": "+1-555-123-4567"
                 },
-                "serviceAddress": {
+                "Address": {
                   "street": "123 Main St",
                   "city": "Springfield",
                   "state": "IL",

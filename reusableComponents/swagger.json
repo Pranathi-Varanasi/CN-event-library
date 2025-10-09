@@ -58,6 +58,33 @@
         },
         "required": ["orgId", "street", "city", "state", "zipCode"]
       },
+      "billingAddress": {
+        "type": "object",
+        "description": "Physical address information",
+        "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "Identifier of the organization/tenant"
+          },
+          "street": {
+            "type": "string",
+            "description": "Street name and number"
+          },
+          "city": {
+            "type": "string",
+            "description": "City name"
+          },
+          "state": {
+            "type": "string",
+            "description": "State or province"
+          },
+          "zipCode": {
+            "type": "string",
+            "description": "Postal or ZIP code"
+          }
+        },
+        "required": ["orgId", "street", "city", "state", "zipCode"]
+      },
       "Appointment": {
         "type": "object",
         "description": "Appointment scheduling details",
