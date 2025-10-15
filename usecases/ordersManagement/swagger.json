@@ -125,7 +125,7 @@
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
-            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/billingAddress"
           },
           "Appointment": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
@@ -190,7 +190,7 @@
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
           },
           "billingAddress": {
-            "$ref": "../../reusableComponents/swagger.json#/components/schemas/Address"
+            "$ref": "../../reusableComponents/swagger.json#/components/schemas/billingAddress"
           },
           "Appointment": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/Appointment"
