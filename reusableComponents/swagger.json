@@ -11,6 +11,10 @@
         "type": "object",
         "description": "Customer information",
         "properties": {
+          "CustomerDetailsId": {
+            "type": "string",
+            "description": "Unique identifier for the customer details record"
+          },
           "orgId": {
             "type": "string",
             "description": "Identifier of the organization/tenant"
@@ -35,6 +39,10 @@
         "type": "object",
         "description": "Physical address information",
         "properties": {
+          "AddressId": {
+            "type": "string",
+            "description": "Unique identifier for the address record"
+          },
           "orgId": {
             "type": "string",
             "description": "Identifier of the organization/tenant"
@@ -62,6 +70,10 @@
         "type": "object",
         "description": "Physical address information",
         "properties": {
+          "billingAddressId": {
+            "type": "string",
+            "description": "Unique identifier for the billing address record"
+          },
           "orgId": {
             "type": "string",
             "description": "Identifier of the organization/tenant"
@@ -89,6 +101,10 @@
         "type": "object",
         "description": "Appointment scheduling details",
         "properties": {
+          "AppointmentId": {
+            "type": "string",
+            "description": "Unique identifier for the appointment record"
+          },
           "orgId": {
             "type": "string",
             "description": "Identifier of the organization/tenant"
