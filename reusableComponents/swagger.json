@@ -11,7 +11,7 @@
         "type": "object",
         "description": "Customer information",
         "properties": {
-          "CustomerDetailsId": {
+          "id": {
             "type": "string",
             "description": "Unique identifier for the customer details record"
           },
@@ -33,13 +33,13 @@
             "description": "The customer's mobile phone number"
           }
         },
-        "required": ["CustomerDetailsId","orgId", "fullName", "email", "mobileNumber"]
+        "required": ["id","orgId", "fullName", "email", "mobileNumber"]
       },
       "Address": {
         "type": "object",
         "description": "Physical address information",
         "properties": {
-          "AddressId": {
+          "id": {
             "type": "string",
             "description": "Unique identifier for the address record"
           },
@@ -64,13 +64,13 @@
             "description": "Postal or ZIP code"
           }
         },
-        "required": ["AddressId","orgId", "street", "city", "state", "zipCode"]
+        "required": ["id","orgId", "street", "city", "state", "zipCode"]
       },
       "billingAddress": {
         "type": "object",
         "description": "Physical address information",
         "properties": {
-          "billingAddressId": {
+          "id": {
             "type": "string",
             "description": "Unique identifier for the billing address record"
           },
@@ -95,13 +95,13 @@
             "description": "Postal or ZIP code"
           }
         },
-        "required": ["billingAddressId","orgId", "street", "city", "state", "zipCode"]
+        "required": ["id","orgId", "street", "city", "state", "zipCode"]
       },
       "Appointment": {
         "type": "object",
         "description": "Appointment scheduling details",
         "properties": {
-          "AppointmentId": {
+          "id": {
             "type": "string",
             "description": "Unique identifier for the appointment record"
           },
@@ -120,7 +120,7 @@
             "description": "The customer's preferred time window"
           }
         },
-        "required": ["AppointmentId","orgId", "preferredDate", "timeSlot"]
+        "required": ["id","orgId", "preferredDate", "timeSlot"]
       }
     }
   },
