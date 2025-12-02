@@ -70,6 +70,11 @@
             "format": "uuid",
             "description": "A unique identifier for this order"
           },
+          "orderCreatedTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp when the order was created"
+          }
           "CustomerDetails": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
