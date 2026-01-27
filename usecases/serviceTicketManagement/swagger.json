@@ -43,10 +43,6 @@
             "format": "uuid",
             "description": "A unique identifier for this service ticket"
           },
-          "customerId": {
-            "type": "string",
-            "description": "The unique identifier for the customer account"
-          },
           "CustomerDetails": {
             "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
           },
