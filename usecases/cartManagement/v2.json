@@ -7,7 +7,70 @@
     },
     "components": {
         "schemas": {
-         
+            "Price": {
+                "type": "object",
+                "description": "Price information",
+                "properties": {
+                    "orgId": {
+                        "type": "string",
+                        "description": "Identifier of the organization/tenant"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "The numeric value of the price"
+                    },
+                    "currency": {
+                        "type": "string",
+                        "default": "USD",
+                        "description": "The currency code (e.g., USD)"
+                    }
+                },
+                "required": [
+                    "orgId",
+                    "amount",
+                    "currency"
+                ]
+            },
+            "OrderLineItem": {
+                "type": "object",
+                "description": "Individual line item in an order",
+                "properties": {
+                    "orgId": {
+                        "type": "string",
+                        "description": "Identifier of the organization/tenant"
+                    },
+                    "itemId": {
+                        "type": "string",
+                        "description": "A unique identifier for this line item"
+                    },
+                    "productType": {
+                        "type": "string",
+                        "enum": [
+                            "Data",
+                            "Voice",
+                            "Video",
+                            "AddOn"
+                        ],
+                        "description": "The category of the product"
+                    },
+                    "productName": {
+                        "type": "string",
+                        "description": "The commercial name of the product (e.g., 'Fiber Internet 1 Gig')"
+                    },
+                    "monthlyPrice": {
+                        "$ref": "#/components/schemas/Price"
+                    },
+                    "oneTimePrice": {
+                        "$ref": "#/components/schemas/Price"
+                    }
+                },
+                "required": [
+                    "orgId",
+                    "itemId",
+                    "productType",
+                    "productName"
+                ]
+            },
             "AddedToCartEvent": {
                 "type": "object",
                 "description": "Event fired when a customer adds items to their shopping cart",
@@ -53,10 +116,26 @@
                         "type": "string",
                         "description": "Identifier of the customer (if known/logged in)"
                     },
+                    "sessionId": {
+                        "type": "string",
+                        "description": "Browser/session identifier for anonymous users"
+                    },
                     "CustomerDetails": {
                         "$ref": "../../reusableComponents/swagger.json#/components/schemas/CustomerDetails"
                     },
-                   
+                    "lineItems": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderLineItem"
+                        },
+                        "description": "Items currently in the cart"
+                    },
+                    "totalMonthlyPrice": {
+                        "$ref": "#/components/schemas/Price"
+                    },
+                    "totalOneTimePrice": {
+                        "$ref": "#/components/schemas/Price"
+                    },
                     "cartCreatedAt": {
                         "type": "string",
                         "format": "date-time",
