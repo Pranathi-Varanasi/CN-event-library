@@ -169,6 +169,8 @@
         "summary": "Service Ticket Created Event",
         "description": "Publishes a service ticket creation event to Kafka topic: service-ticket-created",
         "tags": ["Service Ticket Events"],
+        "intent": "Service Ticket Management",
+        "sub_intent": "Create Service Ticket",
         "requestBody": {
           "required": true,
           "content": {
@@ -176,19 +178,24 @@
               "schema": {
                 "$ref": "#/components/schemas/ServiceTicketCreatedEvent"
               },
-              "example": {
+              "sample_event": {
+                "orgId": "ORG-001",
                 "ticketId": "550e8400-e29b-41d4-a716-446655440000",
                 "customerId": "CUST-12345",
-                "customerContact": {
+                "CustomerDetails": {
+                  "id": "CUSTDET-001",
+                  "orgId": "ORG-001",
                   "fullName": "John Smith",
                   "email": "john.smith@email.com",
                   "mobileNumber": "+1-555-123-4567"
                 },
                 "Address": {
-                  "street": "123 Main St",
-                  "city": "Springfield",
-                  "state": "IL",
-                  "zipCode": "62701"
+                   "id": "ADDR-001",
+                   "orgId": "ORG-001",
+                   "street": "123 Main St",
+                   "city": "Springfield",
+                   "state": "IL",
+                   "zipCode": "62701"
                 },
                 "problemDescription": "Internet connection has been intermittent for the past 2 days",
                 "serviceType": "Data",
@@ -213,6 +220,8 @@
         "summary": "Service Ticket Updated Event",
         "description": "Publishes a service ticket update event to Kafka topic: service-ticket-updated",
         "tags": ["Service Ticket Events"],
+        "intent": "Service Ticket Management",
+        "sub_intent": "Update Ticket Status",
         "requestBody": {
           "required": true,
           "content": {
@@ -220,10 +229,12 @@
               "schema": {
                 "$ref": "#/components/schemas/ServiceTicketUpdatedEvent"
               },
-              "example": {
+              "sample_event": {
+                "orgId": "ORG-001",
                 "ticketId": "550e8400-e29b-41d4-a716-446655440000",
                 "newStatus": "Diagnosing",
                 "logEntry": {
+                   "orgId": "ORG-001",
                   "timestamp": "2024-01-15T11:15:00Z",
                   "author": "Tech Support Agent",
                   "note": "Ran remote diagnostics - detected signal strength issues"
@@ -247,6 +258,8 @@
         "summary": "Service Ticket Dispatch Scheduled Event",
         "description": "Publishes a technician dispatch scheduling event to Kafka topic: service-ticket-dispatch-scheduled",
         "tags": ["Service Ticket Events"],
+        "intent": "Service Ticket Management",
+        "sub_intent": "Schedule Technician Dispatch",
         "requestBody": {
           "required": true,
           "content": {
@@ -254,14 +267,19 @@
               "schema": {
                 "$ref": "#/components/schemas/ServiceTicketDispatchScheduledEvent"
               },
-              "example": {
+              "sample_event": {
+                "orgId": "ORG-001",
                 "ticketId": "550e8400-e29b-41d4-a716-446655440000",
                 "technicianId": "TECH-789",
-                "appointmentDetails": {
-                  "appointmentDate": "2024-01-16",
+                "Appointment": {
+                   "id": "APPT-001",
+                   "orgId": "ORG-001",
+                  "preferredDate": "2024-01-16",
                   "timeSlot": "Morning (8-12)"
                 },
-                "onSiteContact": {
+                "CustomerDetails": {
+                    "id": "CUSTDET-001",
+                    "orgId": "ORG-001",
                   "fullName": "Jane Smith",
                   "email": "jane.smith@email.com",
                   "mobileNumber": "+1-555-987-6543"
@@ -285,6 +303,8 @@
         "summary": "Service Ticket Resolved Event",
         "description": "Publishes a service ticket resolution event to Kafka topic: service-ticket-resolved",
         "tags": ["Service Ticket Events"],
+        "intent": "Service Ticket Management",
+        "sub_intent": "Resolve Service Ticket",
         "requestBody": {
           "required": true,
           "content": {
@@ -292,12 +312,14 @@
               "schema": {
                 "$ref": "#/components/schemas/ServiceTicketResolvedEvent"
               },
-              "example": {
+              "sample_event": {
+                "orgId": "ORG-001",
                 "ticketId": "550e8400-e29b-41d4-a716-446655440000",
                 "resolutionTimestamp": "2024-01-16T14:30:00Z",
                 "resolvedBy": "Field Technician Mike Johnson",
                 "resolutionCode": "Replaced Equipment",
                 "resolutionNotes": {
+                  "orgId": "ORG-001",
                   "timestamp": "2024-01-16T14:30:00Z",
                   "author": "Field Technician Mike Johnson",
                   "note": "Replaced faulty modem. Customer now has full connectivity. Tested all services successfully."

@@ -169,12 +169,61 @@
                 "tags": [
                     "Cart Events"
                 ],
+                "intent": "Cart Management",
+                "sub_intent": "Add Item to Cart",
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/AddedToCartEvent"
+                            },
+                            "sample_event": {
+                                "eventId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                                "eventType": "ADDED_TO_CART",
+                                "eventTimestamp": "2024-01-15T14:30:00Z",
+                                "orgId": "ORG-001",
+                                "cartId": "550e8400-e29b-41d4-a716-446655440000",
+                                "cartStatus": "Active",
+                                "customerId": "CUST-12345",
+                                "sessionId": "SESSION-98765",
+                                "CustomerDetails": {
+                                    "id": "CUSTDET-001",
+                                    "orgId": "ORG-001",
+                                    "fullName": "Jane Smith",
+                                    "email": "jane.smith@email.com",
+                                    "mobileNumber": "+1-555-987-6543"
+                                },
+                                "lineItems": [
+                                    {
+                                        "orgId": "ORG-001",
+                                        "itemId": "ITEM-001",
+                                        "productType": "Data",
+                                        "productName": "Fiber Internet 1 Gig",
+                                        "monthlyPrice": {
+                                            "orgId": "ORG-001",
+                                            "amount": 79.99,
+                                            "currency": "USD"
+                                        },
+                                        "oneTimePrice": {
+                                            "orgId": "ORG-001",
+                                            "amount": 99.99,
+                                            "currency": "USD"
+                                        }
+                                    }
+                                ],
+                                "totalMonthlyPrice": {
+                                    "orgId": "ORG-001",
+                                    "amount": 79.99,
+                                    "currency": "USD"
+                                },
+                                "totalOneTimePrice": {
+                                    "orgId": "ORG-001",
+                                    "amount": 99.99,
+                                    "currency": "USD"
+                                },
+                                "cartCreatedAt": "2024-01-15T14:25:00Z",
+                                "lastModifiedAt": "2024-01-15T14:30:00Z"
                             }
                         }
                     }

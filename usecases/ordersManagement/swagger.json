@@ -243,12 +243,76 @@
         "summary": "Order Created Event",
         "description": "Publishes an order creation event to Kafka topic: order-created",
         "tags": ["Order Events"],
+        "intent": "Order Management",
+        "sub_intent": "Create New Order",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrderCreatedEvent"
+              },
+              "example": {
+                "orgId": "ORG-001",
+                "orderId": "550e8400-e29b-41d4-a716-446655440000",
+                "orderCreatedTimestamp": "2024-01-15T10:30:00Z",
+                "CustomerDetails": {
+                  "id": "CUSTDET-001",
+                  "orgId": "ORG-001",
+                  "fullName": "John Smith",
+                  "email": "john.smith@email.com",
+                  "mobileNumber": "+1-555-123-4567"
+                },
+                "Address": {
+                  "id": "ADDR-001",
+                  "orgId": "ORG-001",
+                  "street": "123 Main St",
+                  "city": "Springfield",
+                  "state": "IL",
+                  "zipCode": "62701"
+                },
+                "billingAddress": {
+                  "id": "BILLADDR-001",
+                  "orgId": "ORG-001",
+                  "street": "123 Main St",
+                  "city": "Springfield",
+                  "state": "IL",
+                  "zipCode": "62701"
+                },
+                "Appointment": {
+                  "id": "APPT-001",
+                  "orgId": "ORG-001",
+                  "preferredDate": "2024-01-20",
+                  "timeSlot": "Morning (8-12)"
+                },
+                "lineItems": [
+                  {
+                    "orgId": "ORG-001",
+                    "itemId": "ITEM-001",
+                    "productType": "Data",
+                    "productName": "Fiber Internet 1 Gig",
+                    "monthlyPrice": {
+                      "orgId": "ORG-001",
+                      "amount": 79.99,
+                      "currency": "USD"
+                    },
+                    "oneTimePrice": {
+                      "orgId": "ORG-001",
+                      "amount": 99.99,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "totalMonthlyPrice": {
+                  "orgId": "ORG-001",
+                  "amount": 79.99,
+                  "currency": "USD"
+                },
+                "totalOneTimePrice": {
+                  "orgId": "ORG-001",
+                  "amount": 99.99,
+                  "currency": "USD"
+                }
               }
             }
           }
@@ -265,12 +329,60 @@
         "summary": "Order Saved Event",
         "description": "Publishes an order save event to Kafka topic: order-saved",
         "tags": ["Order Events"],
+        "intent": "Order Management",
+        "sub_intent": "Save Draft Order",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrderSavedEvent"
+              },
+              "sample_event": {
+                "orgId": "ORG-001",
+                "orderId": "650e8400-e29b-41d4-a716-446655440001",
+                "CustomerDetails": {
+                  "id": "CUSTDET-002",
+                  "orgId": "ORG-001",
+                  "fullName": "Jane Doe",
+                  "email": "jane.doe@email.com",
+                  "mobileNumber": "+1-555-987-6543"
+                },
+                "Address": {
+                  "id": "ADDR-002",
+                  "orgId": "ORG-001",
+                  "street": "456 Oak Ave",
+                  "city": "Chicago",
+                  "state": "IL",
+                  "zipCode": "60601"
+                },
+                "billingAddress": {
+                  "id": "BILLADDR-002",
+                  "orgId": "ORG-001",
+                  "street": "456 Oak Ave",
+                  "city": "Chicago",
+                  "state": "IL",
+                  "zipCode": "60601"
+                },
+                "Appointment": {
+                  "id": "APPT-002",
+                  "orgId": "ORG-001",
+                  "preferredDate": "2024-01-25",
+                  "timeSlot": "Afternoon (1-5)"
+                },
+                "lineItems": [
+                  {
+                    "orgId": "ORG-001",
+                    "itemId": "ITEM-002",
+                    "productType": "Voice",
+                    "productName": "Home Phone Service",
+                    "monthlyPrice": {
+                      "orgId": "ORG-001",
+                      "amount": 29.99,
+                      "currency": "USD"
+                    }
+                  }
+                ]
               }
             }
           }
@@ -287,12 +399,20 @@
         "summary": "Order Confirmed Event",
         "description": "Publishes an order confirmation event to Kafka topic: order-confirmed",
         "tags": ["Order Events"],
+        "intent": "Order Management",
+        "sub_intent": "Confirm Order",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrderConfirmedEvent"
+              },
+              "sample_event": {
+                "orgId": "ORG-001",
+                "orderId": "550e8400-e29b-41d4-a716-446655440000",
+                "confirmationTimestamp": "2024-01-15T11:00:00Z",
+                "status": "Confirmed"
               }
             }
           }
@@ -309,12 +429,77 @@
         "summary": "Order Updated Event",
         "description": "Publishes an order update event to Kafka topic: order-updated",
         "tags": ["Order Events"],
+        "intent": "Order Management",
+        "sub_intent": "Update Order",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrderUpdatedEvent"
+              },
+              "sample_event": {
+                "orgId": "ORG-001",
+                "orderId": "550e8400-e29b-41d4-a716-446655440000",
+                "updatedTimestamp": "2024-01-15T12:00:00Z",
+                "CustomerDetails": {
+                  "id": "CUSTDET-001",
+                  "orgId": "ORG-001",
+                  "fullName": "John Smith",
+                  "email": "john.smith.new@email.com",
+                  "mobileNumber": "+1-555-123-4567"
+                },
+                "Address": {
+                  "id": "ADDR-001",
+                  "orgId": "ORG-001",
+                  "street": "123 Main St Apt 5",
+                  "city": "Springfield",
+                  "state": "IL",
+                  "zipCode": "62701"
+                },
+                "billingAddress": {
+                  "id": "BILLADDR-001",
+                  "orgId": "ORG-001",
+                  "street": "123 Main St Apt 5",
+                  "city": "Springfield",
+                  "state": "IL",
+                  "zipCode": "62701"
+                },
+                "Appointment": {
+                  "id": "APPT-001",
+                  "orgId": "ORG-001",
+                  "preferredDate": "2024-01-22",
+                  "timeSlot": "Afternoon (1-5)"
+                },
+                "lineItems": [
+                  {
+                    "orgId": "ORG-001",
+                    "itemId": "ITEM-001",
+                    "productType": "Data",
+                    "productName": "Fiber Internet 1 Gig",
+                    "monthlyPrice": {
+                      "orgId": "ORG-001",
+                      "amount": 79.99,
+                      "currency": "USD"
+                    },
+                    "oneTimePrice": {
+                      "orgId": "ORG-001",
+                      "amount": 99.99,
+                      "currency": "USD"
+                    }
+                  },
+                  {
+                    "orgId": "ORG-001",
+                    "itemId": "ITEM-003",
+                    "productType": "AddOn",
+                    "productName": "Wi-Fi Router",
+                    "monthlyPrice": {
+                      "orgId": "ORG-001",
+                      "amount": 10.00,
+                      "currency": "USD"
+                    }
+                  }
+                ]
               }
             }
           }
@@ -331,12 +516,20 @@
         "summary": "Order Cancelled Event",
         "description": "Publishes an order cancellation event to Kafka topic: order-cancelled",
         "tags": ["Order Events"],
+        "intent": "Order Management",
+        "sub_intent": "Cancel Order",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OrderCancelledEvent"
+              },
+              "sample_event": {
+                "orgId": "ORG-001",
+                "orderId": "650e8400-e29b-41d4-a716-446655440001",
+                "cancellationTimestamp": "2024-01-16T09:00:00Z",
+                "reason": "Customer requested cancellation due to change of address"
               }
             }
           }
